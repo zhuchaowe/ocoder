@@ -1,0 +1,85 @@
+UIImageView#icon{
+	top:30.0;
+	left:26.0;
+	image:"taobao-share";
+}
+UILabel#title{
+	centerY:0.0 icon;
+	left:10.0 icon.mas_right;
+	right:-26.0 Low;
+	text:"夏季必备";
+	font-size:16.0;
+	color:rgb(2,2,2);
+}
+UILabel#sale{
+	left:0.0 icon;
+	top:12.5 icon.mas_bottom;
+	text:"销量";
+	font-size:12.0;
+	color:rgb(157,157,157);
+}
+UILabel#price{
+	left:0.0 icon;
+	top:15.0 sale.mas_bottom;
+	text:"￥2.9";
+	font-size:16.0;
+	color:#FB406D;
+}
+UILabel#originPrice{
+	left:2.0 price.mas_right;
+	bottom:0.0 price;
+	text:"￥5.9";
+	font-size:10.0;
+	color:rgb(157,157,157);
+}
+UIImageView#youhuiquanbg{
+	left:0.0 icon;
+	top:7.5 price.mas_bottom;
+	image:"youhuiquankuang";
+}
+UILabel#youhuiquan{
+	left:5.0 youhuiquanbg;
+	top:5.0 youhuiquanbg;
+	right:-5.0 youhuiquanbg;
+	bottom:-5.0 youhuiquanbg;
+	text:"3元优惠券";
+	color:white;
+	font-size:12.0;
+}
+UIImageView#yujizhuanbg{
+	centerY:0.0 youhuiquanbg;
+	right:-26.0;
+	image:"yujizhuankuang";
+} 
+UILabel#yujizhuan{
+	left:5.0 yujizhuanbg;
+	top:5.0 yujizhuanbg;
+	right:-5.0 yujizhuanbg;
+	bottom:-5.0 yujizhuanbg;
+	text:"预计赚0.66元";
+	color:white;
+	font-size:12.0
+} 
+UIView#blackView{
+	left:20.0;
+	top:50.0 price.mas_bottom;
+	width:4.0;
+	height:20.0;
+	background-color:black;
+}
+UILabel#shareTextTitle{
+	left:5.0 blackView.mas_right;
+	centerY:0.0 blackView;
+	text:"分享文案";
+	color:rgb(2,2,2);
+	font-size:18.0;
+}
+UILabel#shareText{
+	left:35.0;
+	top:25.0 shareTextTitle.mas_bottom;
+	bottom:0.0;
+	right:-35.0;
+	numberOfLines:0;
+	text:"分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案分享文案";
+	font-size:14.0;
+}

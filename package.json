@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "commander": "^2.15.1",
+    "css2json": "0.0.4"
+  },
+  "name": "ocoder",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "bin": {
+    "ocoder": "index.js"
+  },
+  "author": "zhuchaowe",
+  "license": "MIT",
+  "description": ""
+}
