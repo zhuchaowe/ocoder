@@ -23,6 +23,9 @@ ocoder css test/ShareDetailView:UIView.css test/
 ## Example
 
 ```
-[ShareDetailView.h](https://github.com/zhuchaowe/ocoder/blob/master/test/ShareDetailView.h)
-[ShareDetailView.m](https://github.com/zhuchaowe/ocoder/blob/master/test/ShareDetailView.m)
+convert
+https://github.com/zhuchaowe/ocoder/blob/master/test/ShareDetailView:UIView.css
+to
+https://github.com/zhuchaowe/ocoder/blob/master/test/ShareDetailView.h
+https://github.com/zhuchaowe/ocoder/blob/master/test/ShareDetailView.m
 ```
