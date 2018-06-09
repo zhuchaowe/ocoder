@@ -17,5 +17,5 @@ npm install ocoder -g
 ## Usage
 
 ```
-ocoder css test/ShareDetailView:UIView.css ~/Desktop
+ocoder css test/ShareDetailView:UIView.css test/
 ```
