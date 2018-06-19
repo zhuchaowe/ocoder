@@ -8,7 +8,7 @@ module.exports = function(cssFile, outPath) {
 	var json = css2json(css);
 
 	var fileName = path.basename(cssFile);
-	var classInfo = fileName.split(':');
+	var classInfo = fileName.split('.')[0].split(':');
 	var className = classInfo[0];
 	var superClass = classInfo[1];
 
@@ -21,13 +21,20 @@ module.exports = function(cssFile, outPath) {
 
 	for (var i = 0; i < allKeys.length; i++) {
 		var key = allKeys[i];
-		var type = key.split("#")[0];
-	    var name = key.split("#")[1];
 
-		interface.push(`@property(nonatomic,strong)${type} *${name};`);
+	    var name = "";
+		if(key == 'self'){
+			name = key;
+		}else{
+		var type = key.split("#")[0];
+	    name = "_"+key.split("#")[1];
+
+		interface.push(`@property(nonatomic,strong)${type} *${key.split("#")[1]};`);
 	    implementation.push(`
-        _${name} = [[${type} alloc]init];
-        [self addSubview:_${name}];`);
+        ${name} = [[${type} alloc]init];
+        [self addSubview:${name}];`);
+		}
+
 
 		var map = json[key];
 		var autoLayout = [];
@@ -58,38 +65,52 @@ module.exports = function(cssFile, outPath) {
 	      	autoLayout.push(`        make.${propertyName}.equalTo(@${value}f);`);
 	      }else if(propertyName == "text"){
 	            if(type == "UIButton"){
-	                implementation.push(`        [_${name} setTitle:@${value} forState:UIControlStateNormal];`);
+	                implementation.push(`        [${name} setTitle:@${value} forState:UIControlStateNormal];`);
 	            }else{
-	                implementation.push(`        _${name}.text = @${value};`);
+	                implementation.push(`        ${name}.text = @${value};`);
 	            }
 	      }else if(propertyName == "image"){
-	            implementation.push(`        _${name}.image = [UIImage imageNamed:@${value}];`);
+		      	if(type == "UIButton"){
+		      	implementation.push(`        [${name} setImage:[UIImage imageNamed:@${value}] forState:UIControlStateNormal];`);
+		      	}else{
+		      	implementation.push(`        ${name}.image = [UIImage imageNamed:@${value}];`);	
+		      	}
+	            
+	      }else if(propertyName == "font"){
+	            var font = value.split(" ");
+	            if(type == "UIButton"){
+	                implementation.push(`        ${name}.titleLabel.font = [UIFont fontWithName:@"${font[1]}" size:${font[0]}f];`);
+	            }else{
+	                implementation.push(`        ${name}.font = [UIFont fontWithName:@"${font[1]}" size:${font[0]}f];`);
+	            }
 	      }else if(propertyName == "font-size"){
 	            if(type == "UIButton"){
-	                implementation.push(`        _${name}.titleLabel.font = [UIFont systemFontOfSize:${value}f];`);
+	                implementation.push(`        ${name}.titleLabel.font = [UIFont systemFontOfSize:${value}f];`);
 	            }else{
-	                implementation.push(`        _${name}.font = [UIFont systemFontOfSize:${value}f];`);
+	                implementation.push(`        ${name}.font = [UIFont systemFontOfSize:${value}f];`);
 	            }
 	      }else if(propertyName == "color"){
 	            if(type == "UIButton"){
-	                implementation.push(`        [_${name} setTitleColor:[UIColor colorWithString:@"${value}"] forState:UIControlStateNormal];`);
+	                implementation.push(`        [${name} setTitleColor:[UIColor colorWithString:@"${value}"] forState:UIControlStateNormal];`);
 	            }else{
-	                implementation.push(`        _${name}.textColor = [UIColor colorWithString:@"${value}"];`);
+	                implementation.push(`        ${name}.textColor = [UIColor colorWithString:@"${value}"];`);
 	            }
 	      }else if(propertyName == "background-image"){
-	            implementation.push(`        [_${name} setBackgroundImage:[UIImage imageNamed:@${value}] forState:UIControlStateNormal];`);
+	            implementation.push(`        [${name} setBackgroundImage:[UIImage imageNamed:@${value}] forState:UIControlStateNormal];`);
 	      }else if(propertyName == "background-color"){
-				implementation.push(`        _${name}.backgroundColor = [UIColor colorWithString:@"${value}"];`);
+				implementation.push(`        ${name}.backgroundColor = [UIColor colorWithString:@"${value}"];`);
 	      }else if(propertyName != ''){
-	            implementation.push(`        _${name}.${propertyName} = ${value};`);
+	            implementation.push(`        ${name}.${propertyName} = ${value};`);
 	      }
 
 		}
+		if(autoLayout.length > 0){
 		var autoLayoutStr = autoLayout.join('\n');
 	    allAutoLayout.push(`
-    [_${name} mas_makeConstraints:^(MASConstraintMaker *make) {
+    [${name} mas_makeConstraints:^(MASConstraintMaker *make) {
 ${autoLayoutStr}
 	    }];`);
+		}
 
 	}
 
