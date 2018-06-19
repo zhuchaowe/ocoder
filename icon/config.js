@@ -1,6 +1,18 @@
 module.exports = {
     "images" : [
         {
+            "size" : "20x20",
+            "idiom" : "iphone",
+            "filename" : "icon_20_iphone@2x.png",
+            "scale" : "2x"
+        },
+        {
+            "size" : "20x20",
+            "idiom" : "iphone",
+            "filename" : "icon_20_iphone@3x.png",
+            "scale" : "3x"
+        },
+        {
             "size" : "29x29",
             "idiom" : "iphone",
             "filename" : "icon_29_iphone.png",
@@ -13,10 +25,22 @@ module.exports = {
             "scale" : "2x"
         },
         {
+            "size" : "29x29",
+            "idiom" : "iphone",
+            "filename" : "icon_29_iphone@3x.png",
+            "scale" : "3x"
+        },
+        {
             "size" : "40x40",
             "idiom" : "iphone",
             "filename" : "icon_40_iphone@2x.png",
             "scale" : "2x"
+        },
+        {
+            "size" : "40x40",
+            "idiom" : "iphone",
+            "filename" : "icon_40_iphone@3x.png",
+            "scale" : "3x"
         },
         {
             "size" : "57x57",
@@ -30,16 +54,29 @@ module.exports = {
             "filename" : "icon_57_iphone@2x.png",
             "scale" : "2x"
         },
-        {
-            "size" : "60x60",
-            "idiom" : "iphone",
-            "filename" : "icon_60_iphone.png",
-            "scale" : "1x"
-        },
+
         {
             "size" : "60x60",
             "idiom" : "iphone",
             "filename" : "icon_60_iphone@2x.png",
+            "scale" : "2x"
+        },
+        {
+            "size" : "60x60",
+            "idiom" : "iphone",
+            "filename" : "icon_60_iphone@3x.png",
+            "scale" : "3x"
+        },
+        {
+            "size" : "20x20",
+            "idiom" : "ipad",
+            "filename" : "icon_20_ipad.png",
+            "scale" : "1x"
+        },
+        {
+            "size" : "20x20",
+            "idiom" : "ipad",
+            "filename" : "icon_20_ipad@2x.png",
             "scale" : "2x"
         },
         {
