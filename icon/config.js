@@ -33,6 +33,12 @@ module.exports = {
         {
             "size" : "60x60",
             "idiom" : "iphone",
+            "filename" : "icon_60_iphone.png",
+            "scale" : "1x"
+        },
+        {
+            "size" : "60x60",
+            "idiom" : "iphone",
             "filename" : "icon_60_iphone@2x.png",
             "scale" : "2x"
         },
